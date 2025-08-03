@@ -40,8 +40,7 @@
 
 ## About The Project
 
-![FocusFlow App Screenshot](https://i.imgur.com/UNIQUE_ID.png) 
-*(Replace this with a real screenshot of your application)*
+
 
 In an age of constant digital distractions, maintaining focus is a major challenge. FocusFlow provides a simple yet powerful solution to manage your time effectively and minimize interruptions. It combines the proven Pomodoro Technique with a robust website blocker to create an optimal work environment.
 
@@ -130,13 +129,13 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information. (You will need to create this file).
+Distributed under the MIT License. See `LICENSE.md` for more information. 
 
 ---
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Your Name - Muhammad Imaran - imranbwpk@gmail.com
 
 Project Link: [https://github.com/Imran-Ashiq/FocusFlow](https://github.com/Imran-Ashiq/FocusFlow)
 
