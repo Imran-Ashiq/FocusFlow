@@ -1,0 +1,962 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbars completely */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main container - centered both vertically and horizontally */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 3rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.container:has(#open-analytics-btn:hover) #timer-display {
+    transform: translateY(-20px);
+}
+
+.container:has(#open-analytics-btn:hover) .buttons {
+    transform: translateY(20px);
+}
+
+/* Timer display */
+#timer-display {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Analytics display */
+#analytics-display {
+    font-size: 1.5rem;
+    color: #BBBBBB;
+    text-align: center;
+    margin: 2rem 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#session-count {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Analytics display - make it clickable */
+#open-analytics-btn {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#open-analytics-btn:hover {
+    background-color: #1E1E1E;
+    box-shadow: 0 0 15px 5px rgba(0, 188, 212, 0.6);
+    transform: scale(1.05);
+}
+
+#open-analytics-btn:hover #analytics-display {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Button styles */
+button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    font-family: Arial, sans-serif;
+}
+
+#start-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#start-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+#pause-btn {
+    background-color: #FF9800;
+    color: white;
+}
+
+#pause-btn:hover {
+    background-color: #e68900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+#reset-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+#reset-btn:hover {
+    background-color: #da190b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+#settings-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+#settings-btn:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+#short-break-btn {
+    background-color: #9C27B0;
+    color: white;
+}
+
+#short-break-btn:hover {
+    background-color: #7B1FA2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
+}
+
+#long-break-btn {
+    background-color: #607D8B;
+    color: white;
+}
+
+#long-break-btn:hover {
+    background-color: #455A64;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+}
+
+#help-btn {
+    background-color: #f0f0f0;
+    color: #121212;
+}
+
+#help-btn:hover {
+    background-color: #bcbfbb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Settings page specific styles */
+h2 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    border: 2px solid #555;
+}
+
+.input-group label {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.input-group input[type="number"] {
+    width: 80px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #1a1a1a;
+    color: #FFFFFF;
+    border: 2px solid #666;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.input-group input[type="number"]:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+}
+
+/* Additional styles for settings headings */
+.settings-heading {
+    margin-top: 2rem;
+}
+
+/* Chrome, Safari, Edge, Opera - remove spinner arrows */
+.input-group input[type="number"]::-webkit-outer-spin-button,
+.input-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox - remove spinner arrows */
+.input-group input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* --- Settings Window Styles --- */
+.settings-container {
+  padding: 20px;
+  text-align: left;
+  max-width: 460px;
+  margin: 0 auto;
+  height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.settings-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.settings-container h2 {
+  margin-bottom: 6px;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.settings-heading {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-style: italic;
+  display: block;
+  visibility: visible;
+}
+
+#blocklist-textarea {
+  width: 100%;
+  height: 120px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+#blocklist-textarea:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+#blocklist-textarea::placeholder {
+  color: #666;
+}
+
+.timer-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 15px 18px;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.input-group label {
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.input-group input[type="number"] {
+  width: 70px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.input-group input[type="number"]:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.4);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 10;
+  min-height: 50px;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* --- Analytics Page Styles --- */
+.analytics-container {
+  padding: 5px 20px 50px 20px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.analytics-container h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  position: relative;
+  z-index: 100;
+}
+
+/* Removed ::after for debugging */
+
+.analytics-container h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #2196F3);
+  margin: 1rem auto 0 auto;
+  border-radius: 2px;
+}
+
+.header-icon {
+  font-size: 2.2rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  animation: iconPulse 3s ease-in-out infinite;
+  position: relative;
+  z-index: 101;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.metric {
+  background-color: #2a2a2a;
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid #555;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px; /* Consistent width for all metrics */
+  text-align: center; /* Center all content */
+}
+
+.metric:last-child {
+  margin-bottom: 3rem;
+}
+
+.metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.metric h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.metric p {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* Focus Score specific styling */
+#focus-score {
+  color: #4CAF50;
+}
+
+/* Dynamic focus score colors based on percentage */
+.focus-score-excellent {
+  color: #4CAF50 !important;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5) !important;
+}
+
+.focus-score-good {
+  color: #8BC34A !important;
+  text-shadow: 0 0 10px rgba(139, 195, 74, 0.5) !important;
+}
+
+.focus-score-average {
+  color: #FF9800 !important;
+  text-shadow: 0 0 10px rgba(255, 152, 0, 0.5) !important;
+}
+
+.focus-score-poor {
+  color: #f44336 !important;
+  text-shadow: 0 0 10px rgba(244, 67, 54, 0.5) !important;
+}
+
+#badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 60px;
+  align-items: center;
+}
+
+.badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  from {
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.no-badges {
+  color: #888;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.error {
+  color: #f44336;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* --- Heatmap Styles --- */
+#heatmap-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  max-width: 280px;
+  margin: 1rem auto 2rem auto;
+  padding: 1.5rem;
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.heatmap-day {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #999;
+  position: relative;
+  font-weight: 600;
+}
+
+.heatmap-day:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  border-color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.heatmap-day:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid #555;
+}
+
+/* Productivity levels */
+.productivity-none {
+  background-color: #161b22;
+  border-color: #30363d;
+}
+
+.productivity-low {
+  background-color: #0e4429;
+  border-color: #26a641;
+}
+
+.productivity-medium {
+  background-color: #006d32;
+  border-color: #26a641;
+}
+
+.productivity-high {
+  background-color: #26a641;
+  border-color: #39d353;
+}
+
+.productivity-very-high {
+  background-color: #39d353;
+  border-color: #56f56c;
+}
+
+/* Heatmap Legend */
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0 2rem 0;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.legend-text {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.legend-colors {
+  display: flex;
+  gap: 2px;
+}
+
+/* === Dashboard Layout Fix V2 === */
+
+/* 1. Reset and prepare the root elements */
+html, .dashboard-body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Hide scrollbars on the body */
+}
+
+/* 2. Use the body as a flex container to center its child */
+.dashboard-body {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the top */
+  padding: 20px 0; /* Add some padding at the top and bottom */
+  box-sizing: border-box;
+}
+
+/* 3. The new container holds all content and handles scrolling */
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; /* Space between metric boxes */
+  overflow-y: auto; /* THE ONLY scrollbar, if needed */
+  padding: 0 20px; /* Add space on the sides */
+  box-sizing: border-box;
+}
+
+/* Dashboard Header Styling */
+.dashboard-container h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* Space between icon and text */
+}
+
+/* Header Icon Styling */
+.dashboard-container h2 img {
+  height: 40px;
+}
+
+/* Heatmap Legend Styling */
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Legend Color Squares */
+.legend-square {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+/* === Insight Box Final Polish === */
+.insight-box {
+  display: flex; /* Use Flexbox for alignment */
+  align-items: center; /* Vertically center the icon and text */
+  justify-content: center; /* Horizontally center them */
+  gap: 20px; /* Create space between the icon and text */
+
+  width: 90%;
+  max-width: 550px;
+  margin-top: 20px;
+  padding: 20px 30px; /* Add generous padding */
+  
+  background: linear-gradient(135deg, #6d5bba, #8d58a3);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+}
+
+/* Style the lightbulb icon inside the box */
+.insight-icon {
+  font-size: 2rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Style the text inside the box */
+.insight-box p {
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: left;
+  flex: 1; /* Allow text to take remaining space */
+}
+
+/* --- Developer Mode Easter Egg --- */
+body.dev-mode {
+    background-color: #0D0208;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+body.dev-mode #timer-display {
+  color: #00FF41;
+  text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41;
+}
+
+body.dev-mode .buttons button {
+  border-radius: 0;
+  border: 1px solid #00FF41;
+  box-shadow: 0 0 5px #00FF41, inset 0 0 5px rgba(0, 255, 65, 0.4);
+  background-color: rgba(0, 255, 65, 0.1);
+  color: #00FF41;
+}
+
+body.dev-mode .buttons button:hover {
+  background-color: rgba(0, 255, 65, 0.3);
+  color: #fff;
+  box-shadow: 0 0 15px #00FF41, inset 0 0 10px rgba(0, 255, 65, 0.6);
+}
+
+body.dev-mode #analytics-display,
+body.dev-mode #session-count {
+    color: #00FF41;
+}
+
+body.dev-mode #open-analytics-btn:hover {
+    background-color: rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 20px #00FF41;
+}
+
+/* --- The New, Professional Mini Mode --- */
+
+body.mini-mode {
+  /* Use Flexbox for a robust layout */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;    /* Center horizontally */
+  padding: 10px;          /* Add some breathing room */
+  overflow: hidden;       /* Prevent scrollbars from ever appearing */
+}
+
+body.mini-mode .container {
+    height: 100%;
+    width: 100%;
+    gap: 0;
+}
+
+body.mini-mode #timer-display {
+  /* --- KEY FIX: Use Viewport Width (vw) for font size --- */
+  /* This makes the font size 30% of the window's current width. */
+  font-size: 30vw;
+  line-height: 1;         /* Keep line height tight */
+  white-space: nowrap;    /* Prevent text from ever wrapping */
+  text-align: center;     /* Ensure it's always centered */
+  flex-grow: 1;           /* Allow it to take up available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep other elements hidden as before */
+body.mini-mode #start-btn,
+body.mini-mode #short-break-btn,
+body.mini-mode #long-break-btn,
+body.mini-mode #pause-btn,
+body.mini-mode #reset-btn,
+body.mini-mode #settings-btn,
+body.mini-mode #help-btn,
+body.mini-mode #analytics-display,
+body.mini-mode #session-counter-wrapper {
+  display: none;
+}
+
+/* Redesigned Mini Mode Toggle Button */
+body.mini-mode #mini-mode-btn {
+  /* Make it smaller and more proportional */
+  padding: 8px;
+  width: 50px;
+  height: 40px;
+  max-width: 50px;  /* Stop it from stretching */
+  flex-shrink: 0;   /* Stop it from shrinking */
+  margin-top: 5px;  /* A little space from the timer */
+  display: block; /* Ensure it is always visible */
+}
+
+/* Make the icon inside the button bigger */
+body.mini-mode #mini-mode-btn i {
+  font-size: 1.2rem;
+}
+
+#mini-mode-btn:hover {
+    background-color: #c94dbe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+}
+
+/* --- Professional Settings Window Redesign --- */
+
+/* The new Card layout for grouping sections */
+.settings-card {
+  background-color: #1E1E1E; /* The standard card background color */
+  padding: 20px; /* Reduced from 25px */
+  border-radius: 8px;
+  margin-bottom: 20px; /* Reduced from 30px */
+}
+
+/* Style the headings inside the cards */
+.settings-card h2 {
+  color: #4CAF50; /* Brand green color */
+  margin-top: 0;
+  margin-bottom: 15px; /* Reduced from 20px */
+  border-bottom: 1px solid #333; /* A subtle separator line */
+  padding-bottom: 10px;
+}
+
+/* --- Custom Styling for Form Elements --- */
+
+/* The Blocklist Text Area */
+#blocklist-textarea {
+  width: 100%;
+  height: 120px; /* Reduced from 150px */
+  background-color: #121212; /* Match the main background */
+  border: 1px solid #444;
+  color: #FFFFFF; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace; /* Monospace font is good for code/urls */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#blocklist-textarea:focus {
+  border-color: #00BCD4; /* The info-blue for focus */
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.4); /* A soft blue glow */
+  outline: none; /* Remove the default outline */
+}
+
+/* The Timer Duration Rows */
+.duration-row {
+  display: flex;
+  justify-content: space-between; /* Pushes items to opposite ends */
+  align-items: center;          /* Aligns them vertically */
+  padding: 12px 0; /* Reduced from 15px */
+  border-bottom: 1px solid #2a2a2e; /* Very subtle line between rows */
+}
+
+.duration-row:last-child {
+  border-bottom: none; /* Remove the line from the last item */
+}
+
+/* The small number input boxes */
+.duration-row input[type="number"] {
+  background-color: #2a2a2e;
+  border: 1px solid #444;
+  color: #FFFFFF;
+  width: 70px; /* Give it a fixed width */
+  padding: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.duration-row input[type="number"]:focus {
+  border-color: #00BCD4;
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+  outline: none;
+}
+
+/* The Save Button */
+#save-settings-btn {
+  width: 100%; /* Make the button full-width */
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  /* Add the same hover effects as other buttons for consistency */
+  transition: all 0.3s ease;
+}
+
+#save-settings-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4); /* A green glow */
+}

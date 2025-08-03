@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow Analytics</title>
+  <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-container">
+    <h2>
+      <span class="header-icon"><i class="fas fa-chart-bar"></i></span>
+      Focus Dashboard
+    </h2>
+    
+    <div class="metric">
+      <h3>Current Streak</h3>
+      <p><span id="streak-count">0</span> Days</p>
+    </div>
+    
+    <div class="metric">
+      <h3>Daily Focus Score</h3>
+      <p><span id="focus-score">0</span>%</p>
+    </div>
+    
+    <div class="metric">
+      <h3>Achievements</h3>
+      <div id="badges-container"></div>
+    </div>
+    
+    <div class="metric">
+      <h3>Productivity Heatmap</h3>
+      <div id="heatmap-container"></div>
+      <div class="heatmap-legend">
+        <span class="legend-text">Less</span>
+        <div class="legend-colors">
+          <div class="legend-square productivity-none"></div>
+          <div class="legend-square productivity-low"></div>
+          <div class="legend-square productivity-medium"></div>
+          <div class="legend-square productivity-high"></div>
+          <div class="legend-square productivity-very-high"></div>
+        </div>
+        <span class="legend-text">More</span>
+      </div>
+    </div>
+    
+    <div class="insight-box">
+      <span class="insight-icon">💡</span>
+      <p id="recommendation-text">Loading insights...</p>
+    </div>
+    
+  </div>
+  <script src="analytics.js" defer></script>
+</body>
+</html>
+

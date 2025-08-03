@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="timer-display">25:00</div>
+        <div id="analytics-display">
+            <a href="#" id="open-analytics-btn">
+                Today's Sessions: <span id="session-count">0</span>
+            </a>
+        </div>
+        <div class="buttons">
+            <button id="start-btn">Start</button>
+            <button id="short-break-btn">Short Break</button>
+            <button id="long-break-btn">Long Break</button>
+            <button id="pause-btn">Pause</button>
+            <button id="reset-btn">Reset</button>
+            <button id="settings-btn">Settings</button>
+            <button id="help-btn">Help</button>
+            <button id="mini-mode-btn" title="Toggle Mini Mode">
+                <i class="fas fa-compress-alt"></i>
+            </button>
+        </div>
+    </div>
+    <script src="renderer.js" defer></script>
+</body>
+</html>

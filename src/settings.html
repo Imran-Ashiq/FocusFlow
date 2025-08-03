@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container settings-container">
+    
+    <div class="settings-content">
+      <div class="settings-card">
+        <h2>Manage Blocklist</h2>
+        <p class="description">Enter one website per line.</p>
+        <textarea id="blocklist-textarea" rows="8"></textarea>
+      </div>
+
+      <div class="settings-card">
+        <h2 class="settings-heading">Timer Durations (minutes)</h2>
+        <div class="timer-inputs">
+          <div class="duration-row">
+            <label for="work-duration-input">Work Session</label>
+            <input type="number" id="work-duration-input">
+          </div>
+          <div class="duration-row">
+            <label for="short-break-duration-input">Short Break</label>
+            <input type="number" id="short-break-duration-input">
+          </div>
+          <div class="duration-row">
+            <label for="long-break-duration-input">Long Break</label>
+            <input type="number" id="long-break-duration-input">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-footer">
+      <button id="save-settings-btn" class="save-btn">Save Settings</button>
+    </div>
+
+  </div>
+  <script src="settings.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow - User Manual</title>
+    <!-- Part 1: Link to local Font Awesome stylesheet -->
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Part 2: The CSS Styling -->
+    <style>
+        :root {
+            --primary-bg: #121212;
+            --secondary-bg: #1E1E1E;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b3b3b3;
+            --accent-green: #4CAF50;
+            --accent-red: #f44336;
+            --border-color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+        }
+
+        .manual-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: var(--primary-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 25px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 30px 0;
+        }
+
+        .sidebar h1 .fa-leaf {
+            color: var(--accent-green);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar li a:hover {
+            background-color: var(--secondary-bg);
+            color: #fff;
+        }
+
+        .sidebar li a.active {
+            background-color: var(--secondary-bg);
+            color: #fff;
+            font-weight: 600;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .sidebar li a .fas {
+            width: 20px;
+            text-align: center;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 40px 50px;
+            overflow-y: auto;
+        }
+
+        .content section {
+            background-color: var(--secondary-bg);
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin: 0 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .troubleshooting-item {
+            margin-top: 25px;
+        }
+
+        .troubleshooting-item .issue {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        .troubleshooting-item .solution {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        /* --- Professional Contact Section Styling --- */
+
+        .contact-card {
+          background-color: #2a2a2e; /* A slightly different background to stand out */
+          border-left: 4px solid #00BCD4; /* Use the info-blue color for the border */
+          padding: 20px 25px;
+          margin-top: 25px;
+          border-radius: 8px;
+        }
+
+        .contact-card p {
+          margin-top: 0;
+          font-size: 0.95rem;
+          color: #c0c0c0; /* A slightly lighter text color */
+        }
+
+        /* The clickable email link */
+        .email-link {
+          display: inline-block;
+          background-color: #00BCD4; /* The info-blue color */
+          color: #ffffff; /* White text */
+          padding: 12px 20px;
+          border-radius: 5px;
+          text-decoration: none; /* Remove the underline */
+          font-weight: bold;
+          margin-top: 10px;
+          transition: all 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .email-link i {
+          margin-right: 10px; /* Space between icon and text */
+        }
+
+        .email-link:hover {
+          background-color: #0197a7; /* A slightly darker blue on hover */
+          transform: translateY(-2px); /* A subtle lift effect */
+          box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3); /* A soft glow */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Part 1: The HTML Structure -->
+    <div class="manual-container">
+        <nav class="sidebar">
+            <h1><i class="fas fa-leaf"></i> FocusFlow</h1>
+            <ul>
+                <li><a href="#getting-started"><i class="fas fa-rocket"></i> Getting Started</a></li>
+                <li><a href="#timer-features"><i class="fas fa-clock"></i> Timer Features</a></li>
+                <li><a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#troubleshooting"><i class="fas fa-question-circle"></i> Troubleshooting</a></li>
+                <li><a href="#shortcuts"><i class="fas fa-keyboard"></i> Shortcuts</a></li>
+                <li><a href="#mini-mode"><i class="fas fa-window-minimize"></i> Mini Mode</a></li>
+                <li><a href="#best-practices"><i class="fas fa-lightbulb"></i> Best Practices</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="getting-started">
+                <h2>Getting Started</h2>
+                <p>This guide introduces the core concepts of FocusFlow, built around the <strong>Pomodoro Technique</strong>—a proven time management method to boost productivity.</p>
+                <ol>
+                    <li><strong>Choose a task</strong> you want to focus on.</li>
+                    <li>Click the <strong>Start</strong> button to begin a 25-minute focus session.</li>
+                    <li>Work on the task without interruption until the timer rings.</li>
+                    <li>Take a short 5-minute break by clicking <strong>Short Break</strong>.</li>
+                    <li>After four focus sessions, take a longer 15-minute break using the <strong>Long Break</strong> button.</li>
+                    <li>Repeat the cycle and watch your productivity soar!</li>
+                </ol>
+            </section>
+
+            <section id="timer-features">
+                <h2>Timer Features</h2>
+                <p>The main screen is your command center. Here's a detailed look at each function:</p>
+                <ul>
+                    <li><strong>Start:</strong> Begins a standard work session. During this time, the website blocker is active.</li>
+                    <li><strong>Short/Long Break:</strong> Starts a break timer. The website blocker is automatically deactivated.</li>
+                    <li><strong>Pause:</strong> Pauses the current timer. This logs an "interrupted" session in your analytics.</li>
+                    <li><strong>Reset:</strong> Stops and resets the timer. This also logs an "interrupted" session.</li>
+                    <li><strong>Settings:</strong> Opens the window to customize timers and the website blocklist.</li>
+                </ul>
+            </section>
+
+            <section id="analytics">
+                <h2>Analytics Dashboard</h2>
+                <p>Click on "Today's Sessions" to open your dashboard and gain insights into your work habits.</p>
+                <ul>
+                    <li><strong>Current Streak:</strong> Shows consecutive days you've completed at least one focus session.</li>
+                    <li><strong>Daily Focus Score:</strong> A percentage score of completed vs. interrupted sessions. Aim for 100%!</li>
+                    <li><strong>Achievements:</strong> Unlock badges for reaching milestones like "5-A-Day" or "Consistency King".</li>
+                    <li><strong>Productivity Heatmap:</strong> A calendar view of your focus intensity. Darker squares mean more completed sessions.</li>
+                </ul>
+            </section>
+
+            <section id="settings">
+                <h2>Settings & Customization</h2>
+                <p>Tailor FocusFlow to your exact needs in the settings window:</p>
+                <ul>
+                    <li><strong>Manage Blocklist:</strong> Add websites (one per line) to block during focus sessions.</li>
+                    <li><strong>Timer Durations:</strong> Customize the length (in minutes) for work, short breaks, and long breaks.</li>
+                </ul>
+                <p>Click <strong>Save Settings</strong> to apply changes. The main timer updates instantly if it's not running.</p>
+            </section>
+
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+                <p>Solutions for common issues to ensure a smooth experience.</p>
+                <div class="troubleshooting-item">
+                    <p><strong class="issue">Issue:</strong> The website blocker isn't working.</p>
+                    <p><strong class="solution">Solution:</strong> FocusFlow needs administrator privileges to block websites. Please close the app, right-click its icon, and select <strong>"Run as administrator"</strong>.</p>
+                </div>
+                <div class="troubleshooting-item">
+                    <p><strong class="issue">Issue:</strong> My settings or analytics data seem to be gone.</p>
+                    <p><strong class="solution">Solution:</strong> Data is stored locally in your user directory. Ensure these files haven't been moved or deleted. Contact support if the issue persists.</p>
+                </div>
+            </section>
+
+            <section id="shortcuts">
+                <h2><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h2>
+                <p>Control the timer from anywhere on your desktop, even when FocusFlow is minimized.</p>
+                <ul>
+                  <li><strong>Ctrl + Alt + S:</strong> Start the current timer.</li>
+                  <li><strong>Ctrl + Alt + P:</strong> Pause the current timer.</li>
+                  <li><strong>Ctrl + Alt + R:</strong> Reset the current timer.</li>
+                </ul>
+            </section>
+
+            <section id="mini-mode">
+              <h2><i class="fas fa-window-minimize"></i> Mini Mode</h2>
+              <p>
+                Mini Mode provides a compact, always-on-top view of your timer, allowing you to keep an eye on your session while working in other applications without distraction.
+              </p>
+              <ul>
+                <li><strong>To Enter Mini Mode:</strong> Click the 'compress' icon button (<i class="fas fa-compress-alt"></i>) on the main control bar. The window will shrink to show only the timer.</li>
+                <li><strong>Always on Top:</strong> In Mini Mode, the window will always stay on top of your other applications.</li>
+                <li><strong>Resizable:</strong> You can click and drag the edges of the Mini Mode window to resize it to your liking. The timer will automatically scale to fit.</li>
+                <li><strong>To Exit Mini Mode:</strong> Simply click the 'expand' icon button (<i class="fas fa-expand-alt"></i>) inside the Mini Mode window. The application will restore to its full, normal view.</li>
+              </ul>
+            </section>
+
+            <section id="best-practices">
+                <h2>Best Practices for Productivity</h2>
+                <ul>
+                    <li><strong>Minimize Distractions:</strong> Before starting, turn off phone notifications and close unnecessary tabs.</li>
+                    <li><strong>Plan Your Tasks:</strong> Decide what you'll work on before starting the timer.</li>
+                    <li><strong>Use Breaks Wisely:</strong> Step away from your screen. Stretch, get water, or rest your eyes.</li>
+                    <li><strong>Be Consistent:</strong> Use FocusFlow daily to build a strong habit and a long streak!</li>
+                </ul>
+            </section>
+
+            <section id="contact">
+                <h2><i class="fas fa-envelope-open-text"></i> Contact & Support</h2>
+                <p>
+                  Your feedback is what makes FocusFlow better! Whether you have a question, a feature idea, or need assistance, we'd love to hear from you.
+                </p>
+              
+                <!-- The new Contact Card -->
+                <div class="contact-card">
+                  <p>For all inquiries, please reach out to our primary support channel:</p>
+                  <a href="mailto:imranbwpk@gmail.com" class="email-link">
+                    <i class="fas fa-envelope"></i> imranbwpk@gmail.com
+                  </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Part 3: The JavaScript (for Active State) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content section');
+            const navLinks = document.querySelectorAll('.sidebar a');
+            const content = document.querySelector('.content');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { 
+                root: content, // Observe scrolling within the main content area
+                threshold: 0.5 // Trigger when 50% of the section is visible
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
