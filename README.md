@@ -1,114 +1,148 @@
- FocusFlow - A Smart Pomodoro & Website Blocker
+<div align="center">
+  <h1 align="center">FocusFlow</h1>
+  <p align="center">
+    A minimalist yet powerful Pomodoro timer and website blocker designed to help you reclaim your focus and boost productivity.
+    <br />
+    <a href="https://github.com/Imran-Ashiq/FocusFlow/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Imran-Ashiq/FocusFlow/issues">Request Feature</a>
+  </p>
+</div>
 
-## 1. Project Overview
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#key-features">Key Features</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-**What is this project?**
-FocusFlow is a desktop application designed to help users improve their productivity and focus. It combines the popular Pomodoro Technique with a customizable website blocker. The application will allow users to start work sessions (e.g., 25 minutes) followed by short breaks, and during these work sessions, it will block access to distracting websites.
+---
 
-**Why are we building this?**
-In an age of constant digital distractions, maintaining focus is a major challenge. This application aims to provide a simple yet powerful tool to help students, developers, writers, and any professional to manage their time effectively and minimize interruptions, leading to more productive work sessions.
+## About The Project
 
-**Who is the target audience?**
-The target audience includes students, remote workers, freelancers, programmers, writers, and anyone who works on a computer and struggles with online distractions.
+![FocusFlow App Screenshot](https://i.imgur.com/UNIQUE_ID.png) 
+*(Replace this with a real screenshot of your application)*
 
-## 2. Key Features & User Stories
+In an age of constant digital distractions, maintaining focus is a major challenge. FocusFlow provides a simple yet powerful solution to manage your time effectively and minimize interruptions. It combines the proven Pomodoro Technique with a robust website blocker to create an optimal work environment.
 
-**Core Timer Functionality:**
-*   As a user, I want to start a 25-minute Pomodoro timer for a focused work session.
-*   As a user, I want to be notified with a sound and a desktop notification when my work session ends and a break begins.
-*   As a user, I want to be able to start a 5-minute short break timer and a 15-minute long break timer.
-*   As a user, I want the application to automatically cycle through Pomodoro sessions and breaks.
-*   As a user, I want to be able to pause, reset, and skip the current timer.
-*   As a user, I want to be able to customize the duration of work sessions, short breaks, and long breaks from a settings page.
+Whether you're a student, developer, writer, or professional, FocusFlow helps you stay on task, reduce burnout, and achieve your goals.
 
-**Website Blocker Functionality:**
-*   As a user, I want to have a predefined list of distracting websites (e.g., facebook.com, youtube.com, twitter.com) blocked during my Pomodoro work sessions.
-*   As a user, I want to be able to add new websites to the blocklist.
-*   As a user, I want to be able to remove websites from the blocklist.
-*   As a user, when I try to access a blocked site during a work session, I want to see a simple "This site is blocked by FocusFlow" page.
-*   As a user, I want the website blocker to automatically enable during work sessions and disable during breaks.
+### Built With
 
-**Simple Analytics:**
-*   As a user, I want to see a simple count of how many Pomodoro sessions I have completed today.
+This project was built using modern, lightweight technologies to ensure a fast and responsive experience.
 
-## 3. Technology Stack
+*   [![Electron][Electron.js]][Electron-url]
+*   HTML5
+*   CSS3
+*   JavaScript (ES6+)
 
-*   **Core Framework:** **Electron.js** (This is crucial as it allows us to build a cross-platform desktop app with HTML, CSS, and JavaScript, and package it as an `.exe`).
-*   **Frontend:** **HTML5, CSS3, JavaScript (Vanilla JS)**. We will keep it simple without a heavy framework like React to start.
-*   **System Interaction:** **Node.js APIs** provided by Electron for file system access (to read/write the blocklist) and desktop notifications.
-*   **Packaging:** **Electron Packager** or **Electron Builder** to create the final `.exe` installer.
+---
 
-## 4. Architectural Decisions
+## Key Features
 
-*   **Main Process vs. Renderer Process:** We will use Electron's main process (`main.js`) to handle window creation, system-level interactions (like modifying the hosts file for the site blocker), and background tasks. The renderer process (`index.html`, `renderer.js`) will manage the user interface and user interactions.
-*   **Data Persistence:** The user's custom settings (timer durations) and the website blocklist will be stored in a simple JSON file in the user's application data directory.
-*   **Website Blocking Method:** The application will temporarily modify the system's `hosts` file to block websites. It will redirect the domains in the blocklist to `127.0.0.1`. **Crucially, the app must have a cleanup mechanism to restore the hosts file when the app is closed or crashes.**
+*   **Pomodoro Timer:** A fully-featured timer with customizable work, short break, and long break durations.
+*   **Website Blocker:** Automatically blocks distracting websites during focus sessions to keep you on task.
+*   **Customizable Blocklist:** Easily add or remove websites from your personal blocklist via a clean settings panel.
+*   **Native Notifications:** Receive non-intrusive OS notifications when it's time for a break.
+*   **Session Analytics:** Track your completed sessions, view your streak, and gain insights into your work patterns with a dedicated analytics dashboard.
+*   **Mini Mode:** A sleek, always-on-top mini timer for unobtrusive visibility while you work.
+*   **Global Shortcuts:** Start, pause, and reset the timer from anywhere on your desktop.
 
-## 5. File and Directory Structure
+---
 
-/FocusFlow
-├── src/
-│ ├── main.js # Electron main process, handles window and system tasks
-│ ├── preload.js # Bridges main and renderer processes securely
-│ ├── index.html # Main application window (UI)
-│ ├── renderer.js # UI logic, event handling
-│ └── style.css # All CSS styles
-├── assets/
-│ └── icons/
-│ ├── icon.png # App icon
-│ └── sounds/
-│ └── notification.mp3 # Sound for timer completion
-├── package.json
-└── README.md
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+You need to have Node.js and npm installed on your machine.
+*   npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1.  Clone the repo
+    ```sh
+    git clone https://github.com/Imran-Ashiq/FocusFlow.git
+    ```
+2.  Navigate into the project directory
+    ```sh
+    cd FocusFlow
+    ```
+3.  Install NPM packages
+    ```sh
+    npm install
+    ```
+4.  Run the application in development mode
+    ```sh
+    npm start
+    ```
+
+---
+
+## Usage
+
+Once installed, you can use FocusFlow to:
+1.  Start a focus session from the main window. The website blocker will activate automatically.
+2.  At the end of a session, a notification will prompt you to take a break, and the blocker will deactivate.
+3.  Customize timer durations and the website blocklist in the **Settings** window.
+4.  View your progress and productivity stats in the **Analytics** dashboard.
+5.  Toggle **Mini Mode** for a less intrusive timer view.
+
+---
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+---
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information. (You will need to create this file).
+
+---
+
+## Contact
+
+Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+
+Project Link: [https://github.com/Imran-Ashiq/FocusFlow](https://github.com/Imran-Ashiq/FocusFlow)
 
 
-## 6. Step-by-Step Implementation Plan
-
-1.  **Project Setup:**
-    *   Initialize a new Node.js project (`npm init -y`).
-    *   Install Electron (`npm install --save-dev electron`).
-    *   Create the file and directory structure as specified above.
-    *   Configure `package.json` with a start script: `"start": "electron ."`.
-2.  **Basic Electron Window:**
-    *   In `main.js`, write the code to create and manage a basic browser window.
-    *   Load `index.html` into the window.
-3.  **UI for Timer:**
-    *   In `index.html`, create the visual elements: a timer display (e.g., "25:00"), Start, Pause, and Reset buttons.
-    *   In `style.css`, add basic styling for the UI.
-4.  **Timer Logic:**
-    *   In `renderer.js`, implement the JavaScript logic for the countdown timer. Make the Start, Pause, and Reset buttons functional.
-5.  **Website Blocker Logic (Main Process):**
-    *   In `main.js`, write functions to:
-        *   Find the path to the system's `hosts` file.
-        *   Read the `hosts` file.
-        *   Append entries to block websites (e.g., `127.0.0.1 facebook.com`).
-        *   Remove those entries to unblock websites.
-    *   **Implement a robust cleanup function to restore the hosts file on app 'close' event.**
-6.  **Connecting UI to Blocker:**
-    *   Use Electron's IPC (Inter-Process Communication) to send messages from the renderer process (`renderer.js`) to the main process (`main.js`).
-    *   When the user starts a Pomodoro session, send a message to the main process to "activate" the blocker.
-    *   When the session ends or is reset, send a message to "deactivate" the blocker.
-7.  **Settings & Blocklist Management:**
-    *   Create a simple settings UI (can be a separate HTML file or a modal in the main window).
-    *   Implement logic to read/write the website list and custom timer durations from a JSON settings file.
-8.  **Packaging the Application:**
-    *   Install and configure `electron-builder`.
-    *   Add a build script to `package.json`.
-    *   Run the build script to generate the `.exe` installer.
-
-## 7. Installation and Setup (for Development)
-
-```bash
-# Clone the repository (once created)
-git clone [your-repo-link]
-
-# Navigate into the project directory
-cd FocusFlow
-
-# Install dependencies
-npm install
-
-# Run the application in development mode
-npm start
+<!-- MARKDOWN LINKS & IMAGES -->
+[Electron.js]: https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white
+[Electron-url]: https://electronjs.org/
 
 
